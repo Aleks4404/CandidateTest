@@ -12,7 +12,7 @@ def browser_setup(browser = 'firefox')
   case browser
   when 'chrome'
     Capybara.register_driver :chrome do |app|
-      Selenium::WebDriver::Chrome.driver_path = 'configuration/chromedriver'
+      Selenium::WebDriver::Chrome.driver_path = 'configuration/chromedriver.exe'
       profile = Selenium::WebDriver::Chrome::Profile.new
       profile['profile.default_content_settings.popups'] = 0 # custom location
       profile['browser.helperApps.neverAsk.saveToDisk'] = 'application/octet-stream, text/xml'
@@ -36,7 +36,7 @@ def browser_setup(browser = 'firefox')
   else
     Capybara.register_driver :firefox_driver do |app|
       profile = Selenium::WebDriver::Firefox::Profile.new
-      Selenium::WebDriver::Firefox.driver_path = 'configuration/geckodriver'
+      Selenium::WebDriver::Firefox.driver_path = 'configuration/geckodriver.exe'
       profile['browser.download.folderList'] = 2 # custom location
       profile['browser.download.dir'] = Dir.pwd + '/features/tmp/'
       profile['browser.helperApps.neverAsk.saveToDisk'] = 'application/octet-stream, text/xml'

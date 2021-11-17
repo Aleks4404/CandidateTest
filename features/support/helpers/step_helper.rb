@@ -15,3 +15,13 @@ def find_user_id(users_information:, user_login:)
 
   users_id.first
 end
+
+#Находим id по логину
+def find_id(login)
+  if @scenario_data.users_id[login].nil?
+    @scenario_data.users_id[login] = find_user_id(users_information: @scenario_data
+                                                                         .users_full_info,
+                                                  user_login: login)
+  end
+  @scenario_data.users_id[login]
+end
