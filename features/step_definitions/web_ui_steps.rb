@@ -6,22 +6,29 @@ When(/^захожу на страницу "(.+?)"$/) do |url|
   sleep 1
 end
 
-When(/^ввожу в поисковой строке текст "([^"]*)"$/) do |text|
-  query = find("//input[@name='q']")
-  query.set(text)
-  query.native.send_keys(:enter)
-  $logger.info('Поисковый запрос отправлен')
-  sleep 1
+When(/^перехожу на вкладку скачать$/) do
+  find(:xpath, "//div[1]/div/div/div[1]/a[1]").click
+  $logger.info("Открыта страница загрузки")
+  sleep 5
 end
 
-When(/^кликаю по строке выдачи с адресом (.+?)$/) do |url|
-  link_first = find("//a[@href='#{url}/']/h3")
-  link_first.click
-  $logger.info("Переход на страницу #{url} осуществлен")
-  sleep 1
+When(/^скачиваю последнюю стабильную версию$/) do
+  download_stable
+  $logger.info("Скачивание завершено")
 end
 
-When(/^я должен увидеть текст на странице "([^"]*)"$/) do |text_page|
-  sleep 1
-  expect(page).to have_text text_page
+When(/^проверяю скачанный файл что находится в нужной директории$/) do
+  check_downloaded
+  $logger.info("Файл находится в: #{$tmp_folder}")
+  $logger.info("Название файла: #{$contents}")
+  $logger.info("Версия установщика: #{$ver_downloaded}")
+end
+
+When(/^я проверяю имя скачанного файла совпадает с именем файла-установщика$/) do
+  compare_vers
+end
+
+When(/^удаляю скачанный файл$/) do
+  FileUtils.rm_rf('features/tmp/')
+  $logger.info('Временные файлы удалены')
 end
