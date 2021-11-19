@@ -26,7 +26,8 @@ end
 When(/^добавляю пользователя c логином (\w+\.\w+) именем (\w+) фамилией (\w+) паролем ([\d\w@!#]+)$/) do
 |login, name, surname, password|
 
-  response = $rest_wrap.post('/users', login: login,
+  response = $rest_wrap.post('/users',
+                             login: login,
                              name: name,
                              surname: surname,
                              password: password,

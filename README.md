@@ -44,7 +44,10 @@
     2. Добавлены в файл [web_ui_steps.rb](features/step_definitions/web_ui_steps.rb) шаги выполения сценария.
 6. Выполнено задание в файле [rest_api_test.feature](features/rest_api_test.feature).
     1. Написано сценарии выполнения.
-    2. Добавлены в файл [rest_tests_steps.rb](features/step_definitions/rest_tests_steps.rb) шаги выполения сценария.
+    2. Добавлены в файл [rest_tests_steps.rb](features/step_definitions/rest_tests_steps.rb) шаги выполения сценария.  
+7. Выполнено задание в файле [rest_api_research_test.feature](features/rest_api_research_test.feature)
+   1. Написано сценарии выполнения.
+   2. Добавлены в файл [rest_api_research_test_steps.rb](features/step_definitions/rest_api_research_test_steps.rb) шаги выполения сценария.
 
 ## Результат тестирования
 
@@ -65,6 +68,16 @@
    <summary>ScreenShot</summary>
 
 ![ScreenShot](pic/RestApi.png)
+
+</details>
+
+**Rest Api Research Test**
+> * Успешных тестов 100% (5 тестов)
+> * Неуспешных тестов 0% (0 тестов)
+<details>
+   <summary>ScreenShot</summary>
+
+![ScreenShot](pic/rest_api.png)
 
 </details>
 

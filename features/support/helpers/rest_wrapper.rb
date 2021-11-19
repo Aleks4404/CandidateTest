@@ -29,6 +29,7 @@ class RestWrapper
                                            payload: params.to_json,
                                            headers: { content_type: 'application/json' }
     JSON.parse(response)
+    $logger.info(response)
   rescue StandardError => e
     send_error e
   end
@@ -51,14 +52,13 @@ class RestWrapper
                                            user: login,
                                            password: password,
                                            payload: params.to_json,
-                                           headers: { content_type: 'application/json' }
+                                           headers: {content_type: 'application/json'}
     JSON.parse(response)
   rescue StandardError => e
     send_error e
   end
 
   private
-
   def send_error(exception)
     puts exception.inspect
     body = exception.response.body
@@ -73,4 +73,9 @@ class RestWrapper
   def compile_full_url(current_url)
     url + current_url
   end
+
+    def compile_delete_url(current_url, d_id)
+      url + current_url + d_id
+    end
+
 end
